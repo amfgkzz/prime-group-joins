@@ -20,10 +20,10 @@ JOIN "warehouse" ON "warehouse"."id"="warehouse_product"."warehouse_id"
 WHERE "products"."description"='diet pepsi';
 
 -- ANSWER FOR QUESTION 5
-SELECT "first_name", "last_name", "line_items"."quantity" FROM "customers" 
+SELECT "first_name", "last_name", COUNT("orders"."id") FROM "customers" 
 JOIN "addresses" ON "customers"."id"="addresses"."customer_id"
 JOIN "orders" ON "addresses"."id"="orders"."address_id"
-JOIN "line_items" ON "orders"."id"="line_items"."order_id";
+GROUP BY "customers"."first_name", "customers"."last_name";
 
 -- ANSWER FOR QUESTION 6
 SELECT COUNT(*) FROM "customers";
